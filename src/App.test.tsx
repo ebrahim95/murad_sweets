@@ -29,4 +29,18 @@ describe('App', () => {
     expect(document.getElementById('order')).toBeInTheDocument()
     expect(document.getElementById('contact')).toBeInTheDocument()
   })
+
+  it('renders main content wrapper for accessibility', () => {
+    render(<App />)
+    const mainContent = document.getElementById('main-content')
+    expect(mainContent).toBeInTheDocument()
+    expect(mainContent?.tagName.toLowerCase()).toBe('main')
+  })
+
+  it('renders skip to main content link for accessibility', () => {
+    render(<App />)
+    const skipLink = screen.getByText('Skip to main content')
+    expect(skipLink).toBeInTheDocument()
+    expect(skipLink).toHaveAttribute('href', '#main-content')
+  })
 })

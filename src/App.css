@@ -1,42 +1,51 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/**
+ * App-specific styles
+ * Global styles and Tailwind imports are in index.css
+ * This file contains component-specific overrides if needed
+ */
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Ensure sections have proper scroll margin for sticky header */
+section[id] {
+  scroll-margin-top: 80px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Screen reader only utility (for skip links) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.sr-only:focus,
+.sr-only.focus\:not-sr-only:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
-.card {
-  padding: 2em;
+/* Ensure focus indicators are visible */
+*:focus-visible {
+  outline: 2px solid #FF6B6B;
+  outline-offset: 2px;
 }
 
-.read-the-docs {
-  color: #888;
+/* Remove default focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
 }

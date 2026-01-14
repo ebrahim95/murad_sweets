@@ -1,4 +1,4 @@
-// Product type definitions - to be implemented in task 2
+// Product type definitions
 export interface Product {
   id: string;
   name: string;
@@ -6,4 +6,7 @@ export interface Product {
   price: number;
   image: string;
   available: boolean;
+  category: 'Mishti' | 'Desserts' | 'Pithas';
 }
+
+export type ProductCategory = Product['category'];

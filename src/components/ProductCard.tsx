@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Product } from '../types'
+import { getPictureSources } from '../utils/imageOptimization'
 
 interface ProductCardProps {
   product: Product
@@ -25,7 +26,7 @@ function generateSrcSet(imageSrc: string): string {
 
 /**
  * ProductCard component displays individual product with image, name, description, and price.
- * Implements lazy loading for images and responsive image serving.
+ * Implements lazy loading for images, responsive image serving, and WebP format with fallbacks.
  * Implements Requirements 3.1, 3.2, 7.4, 8.2
  */
 export function ProductCard({ product }: ProductCardProps) {
@@ -44,6 +45,9 @@ export function ProductCard({ product }: ProductCardProps) {
   // Format price to display with 2 decimal places
   const formattedPrice = `$${product.price.toFixed(2)}`
 
+  // Get optimized image sources for WebP with fallback
+  const pictureSources = getPictureSources(product.image)
+
   return (
     <article
       className="
@@ -56,7 +60,7 @@ export function ProductCard({ product }: ProductCardProps) {
       "
       aria-label={`${product.name} - ${formattedPrice}`}
     >
-      {/* Image container with lazy loading */}
+      {/* Image container with lazy loading and WebP support */}
       <div className="relative aspect-square overflow-hidden bg-pastel-cream">
         {/* Placeholder while loading */}
         {!imageLoaded && (
@@ -80,24 +84,35 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
         
-        {/* Product image with lazy loading and responsive srcset */}
+        {/* Product image with lazy loading, WebP support, and responsive srcset */}
         {!imageError ? (
-          <img
-            src={product.image}
-            srcSet={generateSrcSet(product.image)}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            alt={product.name}
-            loading="lazy"
-            decoding="async"
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-            className={`
-              w-full h-full object-cover
-              group-hover:scale-105
-              transition-transform duration-300 ease-in-out
-              ${imageLoaded ? 'opacity-100' : 'opacity-0'}
-            `}
-          />
+          <picture>
+            {/* WebP source for modern browsers */}
+            {pictureSources.webpSrc && (
+              <source
+                type="image/webp"
+                srcSet={generateSrcSet(pictureSources.webpSrc) || pictureSources.webpSrc}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+              />
+            )}
+            {/* Fallback image */}
+            <img
+              src={pictureSources.fallbackSrc}
+              srcSet={generateSrcSet(product.image)}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+              alt={product.name}
+              loading="lazy"
+              decoding="async"
+              onLoad={handleImageLoad}
+              onError={handleImageError}
+              className={`
+                w-full h-full object-cover
+                group-hover:scale-105
+                transition-transform duration-300 ease-in-out
+                ${imageLoaded ? 'opacity-100' : 'opacity-0'}
+              `}
+            />
+          </picture>
         ) : (
           /* Fallback for failed images */
           <div 

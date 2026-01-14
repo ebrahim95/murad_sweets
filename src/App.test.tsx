@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import App from './App'
 
 describe('App', () => {
@@ -21,13 +21,20 @@ describe('App', () => {
     expect(screen.getAllByText('Contact').length).toBeGreaterThan(0)
   })
 
-  it('renders section elements with correct IDs', () => {
+  it('renders section elements with correct IDs', async () => {
     render(<App />)
+    // Non-lazy sections should be immediately available
     expect(document.getElementById('home')).toBeInTheDocument()
     expect(document.getElementById('products')).toBeInTheDocument()
     expect(document.getElementById('about')).toBeInTheDocument()
-    expect(document.getElementById('order')).toBeInTheDocument()
-    expect(document.getElementById('contact')).toBeInTheDocument()
+    
+    // Lazy-loaded sections need to wait for Suspense to resolve
+    await waitFor(() => {
+      expect(document.getElementById('order')).toBeInTheDocument()
+    })
+    await waitFor(() => {
+      expect(document.getElementById('contact')).toBeInTheDocument()
+    })
   })
 
   it('renders main content wrapper for accessibility', () => {

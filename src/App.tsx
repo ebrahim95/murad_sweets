@@ -1,5 +1,26 @@
-import { Navigation, Hero, Products, About, ContactForm, OrderForm, Footer } from './components'
+import { lazy, Suspense } from 'react'
+import { Navigation, Hero, Products, About, Footer } from './components'
 import { products } from './data/products'
+
+// Lazy load heavy form components for better initial load performance
+// These components are below the fold and can be loaded on demand
+// Requirements: 8.2, 8.3
+const OrderForm = lazy(() => import('./components/OrderForm'))
+const ContactForm = lazy(() => import('./components/ContactForm'))
+
+/**
+ * Loading fallback component for lazy-loaded sections
+ */
+function SectionLoader() {
+  return (
+    <div className="py-16 md:py-24 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-12 h-12 border-4 border-pastel-pink border-t-accent-coral rounded-full animate-spin" />
+        <p className="font-body text-brand-dark/60">Loading...</p>
+      </div>
+    </div>
+  )
+}
 
 /**
  * Main App component that composes all section components.
@@ -8,11 +29,15 @@ import { products } from './data/products'
  * - Hero section with business branding
  * - Products gallery
  * - About section with business story
- * - Order form for placing orders
- * - Contact form for inquiries
+ * - Order form for placing orders (lazy loaded)
+ * - Contact form for inquiries (lazy loaded)
  * - Footer with additional links
  * 
- * Requirements: All sections (1-9)
+ * Performance optimizations:
+ * - Code splitting with React.lazy() for heavy components
+ * - Suspense boundaries for graceful loading states
+ * 
+ * Requirements: All sections (1-9), 8.2, 8.3
  */
 function App() {
   return (
@@ -40,11 +65,15 @@ function App() {
         {/* About Section - Business story and mission */}
         <About />
 
-        {/* Order Section - Product selection and order form */}
-        <OrderForm products={products} />
+        {/* Order Section - Product selection and order form (lazy loaded) */}
+        <Suspense fallback={<SectionLoader />}>
+          <OrderForm products={products} />
+        </Suspense>
 
-        {/* Contact Section - Contact form and business info */}
-        <ContactForm />
+        {/* Contact Section - Contact form and business info (lazy loaded) */}
+        <Suspense fallback={<SectionLoader />}>
+          <ContactForm />
+        </Suspense>
       </main>
 
       {/* Footer Component - Copyright and additional links */}

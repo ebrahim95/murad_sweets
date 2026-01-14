@@ -226,16 +226,16 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
   return (
     <section
       id="order"
-      className="py-16 md:py-24 bg-gradient-to-b from-pastel-cream/30 to-white"
+      className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-pastel-cream/30 to-white"
       aria-label="Order section"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-3 sm:px-4">
         {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-brand-dark mb-4">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-brand-dark mb-3 sm:mb-4">
             Place Your Order
           </h2>
-          <p className="font-body text-lg text-brand-dark/70 max-w-2xl mx-auto">
+          <p className="font-body text-base sm:text-lg text-brand-dark/70 max-w-2xl mx-auto px-2">
             Select your favorite sweets and we'll have them ready for you!
           </p>
         </div>
@@ -291,12 +291,12 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
         )}
 
         <form onSubmit={handleSubmit} noValidate className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Product Selection - Takes 2 columns on large screens */}
-            <div className="lg:col-span-2 space-y-8">
-              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
-                <h3 className="font-heading text-2xl font-semibold text-brand-dark mb-6 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-pastel-pink rounded-full flex items-center justify-center text-accent-coral font-bold text-sm">1</span>
+            <div className="lg:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                <h3 className="font-heading text-xl sm:text-2xl font-semibold text-brand-dark mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 bg-pastel-pink rounded-full flex items-center justify-center text-accent-coral font-bold text-xs sm:text-sm">1</span>
                   Select Your Sweets
                 </h3>
                 
@@ -314,18 +314,18 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
 
                 {/* Products by Category */}
                 {Object.entries(productsByCategory).map(([category, categoryProducts]) => (
-                  <div key={category} className="mb-8 last:mb-0">
-                    <h4 className="font-heading text-lg font-semibold text-brand-dark mb-4 pb-2 border-b border-gray-100">
+                  <div key={category} className="mb-6 sm:mb-8 last:mb-0">
+                    <h4 className="font-heading text-base sm:text-lg font-semibold text-brand-dark mb-3 sm:mb-4 pb-2 border-b border-gray-100">
                       {category}
                     </h4>
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       {categoryProducts.map(product => (
                         <div 
                           key={product.id}
-                          className="flex items-center gap-4 p-4 rounded-xl bg-pastel-cream/30 hover:bg-pastel-cream/50 transition-colors"
+                          className="flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-pastel-cream/30 hover:bg-pastel-cream/50 transition-colors"
                         >
-                          {/* Product Image */}
-                          <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                          {/* Product Image - smaller on mobile */}
+                          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
                             <img
                               src={product.image}
                               alt={product.name}
@@ -338,33 +338,30 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                             />
                           </div>
                           
-                          {/* Product Info */}
+                          {/* Product Info - more compact on mobile */}
                           <div className="flex-1 min-w-0">
-                            <h5 className="font-heading font-semibold text-brand-dark truncate">
+                            <h5 className="font-heading font-semibold text-brand-dark text-sm sm:text-base truncate">
                               {product.name}
                             </h5>
-                            <p className="font-body text-sm text-brand-dark/60 truncate">
-                              {product.description}
-                            </p>
-                            <p className="font-heading font-bold text-accent-coral mt-1">
+                            <p className="font-heading font-bold text-accent-coral text-sm sm:text-base">
                               ${formatPrice(product.price)}
                             </p>
                           </div>
                           
-                          {/* Quantity Controls */}
-                          <div className="flex items-center gap-2">
+                          {/* Quantity Controls - compact on mobile */}
+                          <div className="flex items-center gap-1">
                             <button
                               type="button"
                               onClick={() => decrementQuantity(product.id)}
                               disabled={isSubmitting || (quantities[product.id] || 0) === 0}
-                              className="w-10 h-10 rounded-lg bg-white border-2 border-gray-200 
+                              className="w-9 h-9 sm:w-11 sm:h-11 min-w-[36px] min-h-[36px] sm:min-w-[44px] sm:min-h-[44px] rounded-lg bg-white border-2 border-gray-200 
                                 flex items-center justify-center text-brand-dark
                                 hover:border-accent-coral hover:text-accent-coral
                                 disabled:opacity-50 disabled:cursor-not-allowed
                                 transition-colors"
                               aria-label={`Decrease quantity of ${product.name}`}
                             >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                               </svg>
                             </button>
@@ -375,8 +372,8 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                               value={quantities[product.id] || 0}
                               onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value) || 0)}
                               disabled={isSubmitting}
-                              className="w-16 h-10 text-center rounded-lg border-2 border-gray-200 
-                                font-heading font-semibold text-brand-dark
+                              className="w-10 sm:w-14 h-9 sm:h-11 min-h-[36px] sm:min-h-[44px] text-center rounded-lg border-2 border-gray-200 
+                                font-heading font-semibold text-brand-dark text-sm sm:text-base
                                 focus:outline-none focus:border-accent-coral
                                 disabled:bg-gray-100 disabled:cursor-not-allowed"
                               aria-label={`Quantity of ${product.name}`}
@@ -386,14 +383,14 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                               type="button"
                               onClick={() => incrementQuantity(product.id)}
                               disabled={isSubmitting}
-                              className="w-10 h-10 rounded-lg bg-accent-coral text-white
+                              className="w-9 h-9 sm:w-11 sm:h-11 min-w-[36px] min-h-[36px] sm:min-w-[44px] sm:min-h-[44px] rounded-lg bg-accent-coral text-white
                                 flex items-center justify-center
                                 hover:bg-accent-coral/90
                                 disabled:opacity-50 disabled:cursor-not-allowed
                                 transition-colors"
                               aria-label={`Increase quantity of ${product.name}`}
                             >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                               </svg>
                             </button>
@@ -408,19 +405,19 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
 
 
             {/* Customer Details & Order Summary - Takes 1 column */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Customer Details */}
-              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
-                <h3 className="font-heading text-2xl font-semibold text-brand-dark mb-6 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-pastel-peach rounded-full flex items-center justify-center text-accent-gold font-bold text-sm">2</span>
+              <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                <h3 className="font-heading text-xl sm:text-2xl font-semibold text-brand-dark mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 bg-pastel-peach rounded-full flex items-center justify-center text-accent-gold font-bold text-xs sm:text-sm">2</span>
                   Your Details
                 </h3>
 
                 {/* Name Field */}
-                <div className="mb-5">
+                <div className="mb-4 sm:mb-5">
                   <label 
                     htmlFor="order-name" 
-                    className="block font-heading font-semibold text-brand-dark mb-2"
+                    className="block font-heading font-semibold text-brand-dark mb-1.5 sm:mb-2 text-sm sm:text-base"
                   >
                     Name <span className="text-accent-coral">*</span>
                   </label>
@@ -432,7 +429,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     onChange={(e) => handleCustomerChange('name', e.target.value)}
                     onBlur={() => handleBlur('name')}
                     disabled={isSubmitting}
-                    className={`w-full px-4 py-3 rounded-xl border-2 font-body text-brand-dark 
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 font-body text-brand-dark text-sm sm:text-base
                       placeholder:text-brand-dark/40 transition-all duration-200
                       focus:outline-none focus:ring-2 focus:ring-accent-coral/20
                       disabled:bg-gray-100 disabled:cursor-not-allowed
@@ -446,17 +443,17 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     aria-describedby={errors.name && touched.name ? 'order-name-error' : undefined}
                   />
                   {errors.name && touched.name && (
-                    <p id="order-name-error" className="mt-2 text-sm text-red-600 font-body" role="alert">
+                    <p id="order-name-error" className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-red-600 font-body" role="alert">
                       {errors.name}
                     </p>
                   )}
                 </div>
 
                 {/* Email Field */}
-                <div className="mb-5">
+                <div className="mb-4 sm:mb-5">
                   <label 
                     htmlFor="order-email" 
-                    className="block font-heading font-semibold text-brand-dark mb-2"
+                    className="block font-heading font-semibold text-brand-dark mb-1.5 sm:mb-2 text-sm sm:text-base"
                   >
                     Email <span className="text-accent-coral">*</span>
                   </label>
@@ -468,7 +465,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     onChange={(e) => handleCustomerChange('email', e.target.value)}
                     onBlur={() => handleBlur('email')}
                     disabled={isSubmitting}
-                    className={`w-full px-4 py-3 rounded-xl border-2 font-body text-brand-dark 
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 font-body text-brand-dark text-sm sm:text-base
                       placeholder:text-brand-dark/40 transition-all duration-200
                       focus:outline-none focus:ring-2 focus:ring-accent-coral/20
                       disabled:bg-gray-100 disabled:cursor-not-allowed
@@ -482,17 +479,17 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     aria-describedby={errors.email && touched.email ? 'order-email-error' : undefined}
                   />
                   {errors.email && touched.email && (
-                    <p id="order-email-error" className="mt-2 text-sm text-red-600 font-body" role="alert">
+                    <p id="order-email-error" className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-red-600 font-body" role="alert">
                       {errors.email}
                     </p>
                   )}
                 </div>
 
                 {/* Phone Field */}
-                <div className="mb-5">
+                <div className="mb-4 sm:mb-5">
                   <label 
                     htmlFor="order-phone" 
-                    className="block font-heading font-semibold text-brand-dark mb-2"
+                    className="block font-heading font-semibold text-brand-dark mb-1.5 sm:mb-2 text-sm sm:text-base"
                   >
                     Phone <span className="text-accent-coral">*</span>
                   </label>
@@ -504,7 +501,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     onChange={(e) => handleCustomerChange('phone', e.target.value)}
                     onBlur={() => handleBlur('phone')}
                     disabled={isSubmitting}
-                    className={`w-full px-4 py-3 rounded-xl border-2 font-body text-brand-dark 
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 font-body text-brand-dark text-sm sm:text-base
                       placeholder:text-brand-dark/40 transition-all duration-200
                       focus:outline-none focus:ring-2 focus:ring-accent-coral/20
                       disabled:bg-gray-100 disabled:cursor-not-allowed
@@ -518,7 +515,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     aria-describedby={errors.phone && touched.phone ? 'order-phone-error' : undefined}
                   />
                   {errors.phone && touched.phone && (
-                    <p id="order-phone-error" className="mt-2 text-sm text-red-600 font-body" role="alert">
+                    <p id="order-phone-error" className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-red-600 font-body" role="alert">
                       {errors.phone}
                     </p>
                   )}
@@ -528,7 +525,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                 <div>
                   <label 
                     htmlFor="order-address" 
-                    className="block font-heading font-semibold text-brand-dark mb-2"
+                    className="block font-heading font-semibold text-brand-dark mb-1.5 sm:mb-2 text-sm sm:text-base"
                   >
                     Delivery Address <span className="text-accent-coral">*</span>
                   </label>
@@ -539,8 +536,8 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     onChange={(e) => handleCustomerChange('address', e.target.value)}
                     onBlur={() => handleBlur('address')}
                     disabled={isSubmitting}
-                    rows={3}
-                    className={`w-full px-4 py-3 rounded-xl border-2 font-body text-brand-dark 
+                    rows={2}
+                    className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 font-body text-brand-dark text-sm sm:text-base
                       placeholder:text-brand-dark/40 transition-all duration-200 resize-none
                       focus:outline-none focus:ring-2 focus:ring-accent-coral/20
                       disabled:bg-gray-100 disabled:cursor-not-allowed
@@ -554,7 +551,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                     aria-describedby={errors.address && touched.address ? 'order-address-error' : undefined}
                   />
                   {errors.address && touched.address && (
-                    <p id="order-address-error" className="mt-2 text-sm text-red-600 font-body" role="alert">
+                    <p id="order-address-error" className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-red-600 font-body" role="alert">
                       {errors.address}
                     </p>
                   )}
@@ -563,9 +560,9 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
 
 
               {/* Order Summary */}
-              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
-                <h3 className="font-heading text-2xl font-semibold text-brand-dark mb-6 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-pastel-lavender rounded-full flex items-center justify-center text-accent-teal font-bold text-sm">3</span>
+              <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                <h3 className="font-heading text-xl sm:text-2xl font-semibold text-brand-dark mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 bg-pastel-lavender rounded-full flex items-center justify-center text-accent-teal font-bold text-xs sm:text-sm">3</span>
                   Order Summary
                 </h3>
 
@@ -609,11 +606,11 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                 )}
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button - 44px minimum touch target height */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 px-6 bg-accent-coral text-black font-heading font-semibold text-lg
+                className="w-full py-3 sm:py-4 px-4 sm:px-6 min-h-[44px] bg-accent-coral text-black font-heading font-semibold text-base sm:text-lg
                   rounded-xl shadow-lg hover:bg-accent-coral/90 hover:shadow-xl
                   focus:outline-none focus:ring-2 focus:ring-accent-coral focus:ring-offset-2
                   disabled:bg-gray-400 disabled:cursor-not-allowed disabled:shadow-none

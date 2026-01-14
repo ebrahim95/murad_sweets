@@ -163,40 +163,40 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
                   Contact Information
                 </h3>
                 <div className="space-y-4">
-                  {/* Email */}
+                  {/* Email - 44px minimum touch target */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-pastel-pink rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 min-w-[44px] min-h-[44px] bg-pastel-pink rounded-xl flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-accent-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
                       <p className="font-heading font-semibold text-brand-dark">Email</p>
-                      <a href="mailto:hello@muradssweets.com" className="font-body text-brand-dark/70 hover:text-accent-coral transition-colors">
+                      <a href="mailto:hello@muradssweets.com" className="font-body text-brand-dark/70 hover:text-accent-coral transition-colors min-h-[44px] inline-flex items-center">
                         hello@muradssweets.com
                       </a>
                     </div>
                   </div>
 
 
-                  {/* Phone */}
+                  {/* Phone - 44px minimum touch target */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-pastel-peach rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 min-w-[44px] min-h-[44px] bg-pastel-peach rounded-xl flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
                     <div>
                       <p className="font-heading font-semibold text-brand-dark">Phone</p>
-                      <a href="tel:+1234567890" className="font-body text-brand-dark/70 hover:text-accent-coral transition-colors">
+                      <a href="tel:+1234567890" className="font-body text-brand-dark/70 hover:text-accent-coral transition-colors min-h-[44px] inline-flex items-center">
                         (123) 456-7890
                       </a>
                     </div>
                   </div>
 
-                  {/* Location */}
+                  {/* Location - 44px minimum touch target */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-pastel-lavender rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 min-w-[44px] min-h-[44px] bg-pastel-lavender rounded-xl flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -382,11 +382,11 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
                   )}
                 </div>
 
-                {/* Submit Button */}
+                {/* Submit Button - 44px minimum touch target height */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 bg-accent-coral text-black font-heading font-semibold 
+                  className="w-full py-4 px-6 min-h-[44px] bg-accent-coral text-black font-heading font-semibold 
                     rounded-xl shadow-md hover:bg-accent-coral/90 hover:shadow-lg
                     focus:outline-none focus:ring-2 focus:ring-accent-coral focus:ring-offset-2
                     disabled:bg-gray-400 disabled:cursor-not-allowed disabled:shadow-none

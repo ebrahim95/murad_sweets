@@ -29,23 +29,24 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          {/* Logo/Brand */}
+          {/* Logo/Brand - 44px minimum touch target height */}
           <button
             onClick={() => handleNavClick('home')}
-            className="text-xl font-heading font-bold text-brand-primary hover:text-accent-coral transition-colors duration-300"
+            className="text-xl font-heading font-bold text-brand-primary hover:text-accent-coral transition-colors duration-300 py-2 min-h-[44px] flex items-center"
             aria-label="Go to home"
           >
             Murad's Sweets
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6">
+          {/* Desktop Navigation - 44px minimum touch target height */}
+          <div className="hidden md:flex space-x-2 lg:space-x-6">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`
                   font-body font-medium transition-colors duration-300
+                  px-3 py-2 min-h-[44px] flex items-center
                   ${activeSection === link.id 
                     ? 'text-brand-primary border-b-2 border-brand-primary' 
                     : 'text-brand-dark hover:text-brand-primary'
@@ -58,9 +59,9 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger Button - 44x44px minimum touch target */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-pastel-pink transition-colors duration-300"
+            className="md:hidden flex flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg hover:bg-pastel-pink transition-colors duration-300"
             onClick={toggleMobileMenu}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -87,21 +88,22 @@ export function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - 44px minimum touch target height for each item */}
         <div
           id="mobile-menu"
           className={`
             md:hidden overflow-hidden transition-all duration-300 ease-in-out
-            ${isMobileMenuOpen ? 'max-h-80 opacity-100 mt-4' : 'max-h-0 opacity-0'}
+            ${isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}
           `}
         >
-          <div className="flex flex-col space-y-2 py-2 border-t border-pastel-pink">
+          <div className="flex flex-col space-y-1 py-2 border-t border-pastel-pink">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`
                   w-full text-left py-3 px-4 rounded-lg font-body font-medium transition-all duration-300
+                  min-h-[44px] flex items-center
                   ${activeSection === link.id 
                     ? 'bg-pastel-pink text-brand-primary' 
                     : 'text-brand-dark hover:bg-pastel-cream hover:text-brand-primary'

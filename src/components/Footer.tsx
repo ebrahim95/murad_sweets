@@ -40,18 +40,18 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Quick links */}
+          {/* Quick links - 44px minimum touch targets */}
           <div className="space-y-4">
             <h4 className="font-heading text-lg font-semibold text-brand-dark">
               Quick Links
             </h4>
             <nav aria-label="Footer navigation">
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {quickLinks.map((link) => (
                   <li key={link.id}>
                     <button
                       onClick={() => handleNavClick(link.id)}
-                      className="font-body text-brand-dark/70 hover:text-accent-coral transition-colors duration-300"
+                      className="font-body text-brand-dark/70 hover:text-accent-coral transition-colors duration-300 py-2 min-h-[44px] flex items-center"
                     >
                       {link.label}
                     </button>
@@ -61,18 +61,18 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Contact info */}
+          {/* Contact info - 44px minimum touch targets for links */}
           <div className="space-y-4">
             <h4 className="font-heading text-lg font-semibold text-brand-dark">
               Get in Touch
             </h4>
-            <address className="font-body text-brand-dark/70 not-italic space-y-2">
+            <address className="font-body text-brand-dark/70 not-italic space-y-1">
               <p>123 Sweet Street</p>
               <p>Dessert City, DC 12345</p>
               <p>
                 <a 
                   href="mailto:hello@muradssweets.com" 
-                  className="hover:text-accent-coral transition-colors duration-300"
+                  className="hover:text-accent-coral transition-colors duration-300 py-2 min-h-[44px] inline-flex items-center"
                 >
                   hello@muradssweets.com
                 </a>
@@ -80,7 +80,7 @@ export function Footer() {
               <p>
                 <a 
                   href="tel:+1234567890" 
-                  className="hover:text-accent-coral transition-colors duration-300"
+                  className="hover:text-accent-coral transition-colors duration-300 py-2 min-h-[44px] inline-flex items-center"
                 >
                   (123) 456-7890
                 </a>
@@ -97,11 +97,11 @@ export function Footer() {
               © {currentYear} Murad's Sweets. All rights reserved.
             </p>
 
-            {/* Social links placeholder */}
-            <div className="flex space-x-4">
+            {/* Social links placeholder - 44px minimum touch targets */}
+            <div className="flex space-x-3">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-brand-dark/10 flex items-center justify-center hover:bg-accent-coral hover:text-white transition-colors duration-300"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-brand-dark/10 flex items-center justify-center hover:bg-accent-coral hover:text-white transition-colors duration-300"
                 aria-label="Follow us on Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -110,7 +110,7 @@ export function Footer() {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-brand-dark/10 flex items-center justify-center hover:bg-accent-coral hover:text-white transition-colors duration-300"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-brand-dark/10 flex items-center justify-center hover:bg-accent-coral hover:text-white transition-colors duration-300"
                 aria-label="Follow us on Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ export function Footer() {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-brand-dark/10 flex items-center justify-center hover:bg-accent-coral hover:text-white transition-colors duration-300"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-brand-dark/10 flex items-center justify-center hover:bg-accent-coral hover:text-white transition-colors duration-300"
                 aria-label="Follow us on Twitter"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

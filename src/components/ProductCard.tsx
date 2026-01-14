@@ -6,9 +6,27 @@ interface ProductCardProps {
 }
 
 /**
+ * Generates srcset for responsive images
+ * @param imageSrc - Base image source
+ * @returns srcset string for responsive images
+ */
+function generateSrcSet(imageSrc: string): string {
+  // For placeholder images or external URLs, return empty string
+  if (!imageSrc || imageSrc.startsWith('http') || imageSrc.includes('placeholder')) {
+    return ''
+  }
+  
+  // Generate srcset for different device resolutions
+  const widths = [200, 400, 600, 800]
+  return widths
+    .map(w => `${imageSrc}?w=${w} ${w}w`)
+    .join(', ')
+}
+
+/**
  * ProductCard component displays individual product with image, name, description, and price.
- * Implements lazy loading for images.
- * Implements Requirements 3.1, 3.2
+ * Implements lazy loading for images and responsive image serving.
+ * Implements Requirements 3.1, 3.2, 7.4, 8.2
  */
 export function ProductCard({ product }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
@@ -62,12 +80,15 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
         
-        {/* Product image with lazy loading */}
+        {/* Product image with lazy loading and responsive srcset */}
         {!imageError ? (
           <img
             src={product.image}
+            srcSet={generateSrcSet(product.image)}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
             alt={product.name}
             loading="lazy"
+            decoding="async"
             onLoad={handleImageLoad}
             onError={handleImageError}
             className={`

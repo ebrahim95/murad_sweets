@@ -1,34 +1,14 @@
 import { SECTIONS } from './router'
-import { navigateToSection } from './utils/navigation'
-import { Navigation } from './components/Navigation'
+import { Navigation, Hero } from './components'
 
 function App() {
-  const handleExploreClick = () => {
-    navigateToSection(SECTIONS.products)
-  }
-
   return (
     <div className="min-h-screen bg-pastel-cream">
       {/* Navigation Component */}
       <Navigation />
 
       {/* Hero Section */}
-      <section id={SECTIONS.home} className="min-h-screen flex items-center justify-center bg-gradient-to-b from-pastel-pink to-pastel-cream">
-        <header className="text-center p-6">
-          <h1 className="text-5xl md:text-6xl font-heading font-bold text-brand-dark mb-4">
-            Murad's Sweets
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 font-body mb-8">
-            Handcrafted sweets made with love
-          </p>
-          <button 
-            onClick={handleExploreClick}
-            className="bg-accent-coral hover:bg-accent-orange text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 text-lg"
-          >
-            Explore Our Sweets
-          </button>
-        </header>
-      </section>
+      <Hero />
 
       {/* Products Section */}
       <section id={SECTIONS.products} className="min-h-screen py-16 bg-white">

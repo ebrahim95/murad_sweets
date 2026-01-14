@@ -1,5 +1,6 @@
 import { SECTIONS } from './router'
 import { navigateToSection } from './utils/navigation'
+import { Navigation } from './components/Navigation'
 
 function App() {
   const handleExploreClick = () => {
@@ -8,27 +9,14 @@ function App() {
 
   return (
     <div className="min-h-screen bg-pastel-cream">
-      {/* Navigation placeholder - will be implemented in task 6 */}
-      <nav className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <span className="text-xl font-heading font-bold text-brand-primary">Sweet Delights</span>
-            <div className="hidden md:flex space-x-6">
-              <button onClick={() => navigateToSection(SECTIONS.home)} className="text-brand-dark hover:text-brand-primary transition-colors">Home</button>
-              <button onClick={() => navigateToSection(SECTIONS.products)} className="text-brand-dark hover:text-brand-primary transition-colors">Products</button>
-              <button onClick={() => navigateToSection(SECTIONS.about)} className="text-brand-dark hover:text-brand-primary transition-colors">About</button>
-              <button onClick={() => navigateToSection(SECTIONS.order)} className="text-brand-dark hover:text-brand-primary transition-colors">Order</button>
-              <button onClick={() => navigateToSection(SECTIONS.contact)} className="text-brand-dark hover:text-brand-primary transition-colors">Contact</button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* Navigation Component */}
+      <Navigation />
 
       {/* Hero Section */}
       <section id={SECTIONS.home} className="min-h-screen flex items-center justify-center bg-gradient-to-b from-pastel-pink to-pastel-cream">
         <header className="text-center p-6">
           <h1 className="text-5xl md:text-6xl font-heading font-bold text-brand-dark mb-4">
-            Sweet Delights
+            Murad's Sweets
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 font-body mb-8">
             Handcrafted sweets made with love
@@ -93,7 +81,7 @@ function App() {
       {/* Footer placeholder */}
       <footer className="bg-brand-dark text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="font-body">&copy; 2024 Sweet Delights. All rights reserved.</p>
+          <p className="font-body">&copy; 2024 Murad's Sweets. All rights reserved.</p>
         </div>
       </footer>
     </div>

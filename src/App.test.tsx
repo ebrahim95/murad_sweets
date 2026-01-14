@@ -5,19 +5,20 @@ import App from './App'
 describe('App', () => {
   it('renders the welcome message', () => {
     render(<App />)
-    // Use getAllByText since "Sweet Delights" appears in both nav and hero
-    const elements = screen.getAllByText('Sweet Delights')
+    // Use getAllByText since "Murad's Sweets" appears in both nav and hero
+    const elements = screen.getAllByText("Murad's Sweets")
     expect(elements.length).toBeGreaterThan(0)
     expect(elements[0]).toBeInTheDocument()
   })
 
   it('renders all navigation sections', () => {
     render(<App />)
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Products')).toBeInTheDocument()
-    expect(screen.getByText('About')).toBeInTheDocument()
-    expect(screen.getByText('Order')).toBeInTheDocument()
-    expect(screen.getByText('Contact')).toBeInTheDocument()
+    // Use getAllByText since navigation links appear in both desktop and mobile menus
+    expect(screen.getAllByText('Home').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Products').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('About').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Order').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Contact').length).toBeGreaterThan(0)
   })
 
   it('renders section elements with correct IDs', () => {

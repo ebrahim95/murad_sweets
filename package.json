@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "@tanstack/react-form": "^1.27.7",
     "@tanstack/react-router": "^1.149.3",
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",

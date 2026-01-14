@@ -1,4 +1,4 @@
-import { Navigation, Hero, Products, About, ContactForm, OrderForm } from './components'
+import { Navigation, Hero, Products, About, ContactForm, OrderForm, Footer } from './components'
 import { products } from './data/products'
 
 function App() {
@@ -22,12 +22,8 @@ function App() {
       {/* Contact Section */}
       <ContactForm />
 
-      {/* Footer placeholder */}
-      <footer className="bg-brand-dark text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="font-body">&copy; 2024 Murad's Sweets. All rights reserved.</p>
-        </div>
-      </footer>
+      {/* Footer Component */}
+      <Footer />
     </div>
   )
 }

@@ -11,6 +11,7 @@ interface ProductsProps {
  * Products section component with responsive grid layout.
  * Displays products grouped by category.
  * Implements Requirements 3.1, 3.2, 3.4
+ * Accessibility: Proper heading hierarchy, semantic HTML, ARIA labels
  */
 export function Products({ products: productsProp }: ProductsProps) {
   // Use provided products or default to imported products
@@ -48,12 +49,12 @@ export function Products({ products: productsProp }: ProductsProps) {
     <section
       id="products"
       className="py-16 md:py-24 bg-gradient-to-b from-white to-pastel-cream/30"
-      aria-label="Products section"
+      aria-labelledby="products-heading"
     >
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-brand-dark mb-4">
+          <h2 id="products-heading" className="font-heading text-4xl md:text-5xl font-bold text-brand-dark mb-4">
             Our Sweets
           </h2>
           <p className="font-body text-lg text-brand-dark/70 max-w-2xl mx-auto">

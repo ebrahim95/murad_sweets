@@ -141,12 +141,12 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
     <section
       id="contact"
       className="py-16 md:py-24 bg-gradient-to-b from-white to-pastel-cream/30"
-      aria-label="Contact section"
+      aria-labelledby="contact-heading"
     >
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-brand-dark mb-4">
+          <h2 id="contact-heading" className="font-heading text-4xl md:text-5xl font-bold text-brand-dark mb-4">
             Get in Touch
           </h2>
           <p className="font-body text-lg text-brand-dark/70 max-w-2xl mx-auto">

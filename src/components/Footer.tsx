@@ -5,6 +5,7 @@ import type { SectionId } from '../router'
 /**
  * Footer component with copyright and additional links.
  * Implements general structure requirements.
+ * Accessibility: Proper landmark, semantic HTML, ARIA labels
  */
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -25,8 +26,9 @@ export function Footer() {
     <footer
       className="bg-pastel-cream text-brand-dark py-12 md:py-16"
       role="contentinfo"
-      aria-label="Site footer"
+      aria-labelledby="footer-heading"
     >
+      <h2 id="footer-heading" className="sr-only">Footer</h2>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 md:gap-12 mb-8">
           {/* Brand section */}

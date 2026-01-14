@@ -1,18 +1,19 @@
 /**
  * About section component with business story and mission content.
  * Implements Requirements 4.1, 4.3
+ * Accessibility: Proper heading hierarchy, semantic HTML, ARIA labels
  */
 export function About() {
   return (
     <section
       id="about"
       className="py-16 md:py-24 bg-gradient-to-b from-pastel-cream/30 to-white"
-      aria-label="About section"
+      aria-labelledby="about-heading"
     >
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-brand-dark mb-4">
+          <h2 id="about-heading" className="font-heading text-4xl md:text-5xl font-bold text-brand-dark mb-4">
             Our Story
           </h2>
           <p className="font-body text-lg text-brand-dark/70 max-w-2xl mx-auto">

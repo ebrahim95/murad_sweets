@@ -45,6 +45,9 @@ export function ProductCard({ product }: ProductCardProps) {
   // Format price to display with 2 decimal places
   const formattedPrice = `$${product.price.toFixed(2)}`
 
+  // Generate descriptive alt text for the product image
+  const imageAltText = `Photo of ${product.name} - ${product.category}`
+
   // Get optimized image sources for WebP with fallback
   const pictureSources = getPictureSources(product.image)
 
@@ -100,7 +103,7 @@ export function ProductCard({ product }: ProductCardProps) {
               src={pictureSources.fallbackSrc}
               srcSet={generateSrcSet(product.image)}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-              alt={product.name}
+              alt={imageAltText}
               loading="lazy"
               decoding="async"
               onLoad={handleImageLoad}

@@ -4,6 +4,7 @@ import { navigateToSection } from '../utils/navigation'
 /**
  * Hero section component with business name, tagline, and CTA button.
  * Implements Requirements 1.1, 1.3, 9.1, 9.2
+ * Accessibility: Proper heading hierarchy, ARIA labels, focus management
  */
 export function Hero() {
   const handleCtaClick = useCallback(() => {
@@ -14,7 +15,7 @@ export function Hero() {
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      aria-label="Hero section"
+      aria-labelledby="hero-heading"
     >
       {/* Background gradient with sweet-themed colors */}
       <div 
@@ -35,6 +36,7 @@ export function Hero() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
         {/* Business name */}
         <h1 
+          id="hero-heading"
           className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-brand-dark mb-4 sm:mb-6 animate-fade-in"
         >
           Murad's Sweets

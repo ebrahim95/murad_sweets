@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { useScrollSpy } from '../hooks/useScrollSpy'
 import { navigateToSection, getNavLinks } from '../utils/navigation'
 import type { SectionId } from '../router'
@@ -6,20 +6,74 @@ import type { SectionId } from '../router'
 /**
  * Navigation component with sticky header, smooth scrolling, and mobile hamburger menu.
  * Implements Requirements 2.1, 2.2, 2.3, 2.4
+ * Accessibility: Keyboard navigation, focus management, ARIA attributes
  */
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const activeSection = useScrollSpy({ offset: 100 })
   const navLinks = getNavLinks()
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
 
   const handleNavClick = useCallback((sectionId: SectionId) => {
     navigateToSection(sectionId)
     setIsMobileMenuOpen(false)
+    // Return focus to hamburger button when closing mobile menu
+    hamburgerRef.current?.focus()
   }, [])
+
+  // Handle escape key to close mobile menu
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false)
+        hamburgerRef.current?.focus()
+      }
+    }
+    
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isMobileMenuOpen])
+
+  // Trap focus within mobile menu when open
+  useEffect(() => {
+    if (isMobileMenuOpen && mobileMenuRef.current) {
+      const focusableElements = mobileMenuRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+
+      const handleTabKey = (e: KeyboardEvent) => {
+        if (e.key !== 'Tab') return
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault()
+          lastElement?.focus()
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault()
+          firstElement?.focus()
+        }
+      }
+
+      document.addEventListener('keydown', handleTabKey)
+      firstElement?.focus()
+      
+      return () => document.removeEventListener('keydown', handleTabKey)
+    }
+  }, [isMobileMenuOpen])
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(prev => !prev)
   }, [])
+
+  // Handle keyboard navigation for nav links
+  const handleKeyDown = useCallback((e: React.KeyboardEvent, sectionId: SectionId) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      handleNavClick(sectionId)
+    }
+  }, [handleNavClick])
 
   return (
     <nav 
@@ -61,11 +115,12 @@ export function Navigation() {
 
           {/* Mobile Hamburger Button - 44x44px minimum touch target */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg hover:bg-pastel-pink transition-colors duration-300"
+            ref={hamburgerRef}
+            className="md:hidden flex flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg hover:bg-pastel-pink transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-coral focus-visible:ring-offset-2"
             onClick={toggleMobileMenu}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             <span 
               className={`
@@ -90,7 +145,10 @@ export function Navigation() {
 
         {/* Mobile Menu - 44px minimum touch target height for each item */}
         <div
+          ref={mobileMenuRef}
           id="mobile-menu"
+          role="menu"
+          aria-hidden={!isMobileMenuOpen}
           className={`
             md:hidden overflow-hidden transition-all duration-300 ease-in-out
             ${isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}
@@ -101,9 +159,13 @@ export function Navigation() {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
+                onKeyDown={(e) => handleKeyDown(e, link.id)}
+                role="menuitem"
+                tabIndex={isMobileMenuOpen ? 0 : -1}
                 className={`
                   w-full text-left py-3 px-4 rounded-lg font-body font-medium transition-all duration-300
                   min-h-[44px] flex items-center
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-coral focus-visible:ring-inset
                   ${activeSection === link.id 
                     ? 'bg-pastel-pink text-brand-primary' 
                     : 'text-brand-dark hover:bg-pastel-cream hover:text-brand-primary'

@@ -27,6 +27,85 @@ a, button {
   transition: all 0.2s ease-in-out;
 }
 
+/* Enhanced focus indicators for accessibility - WCAG 2.1 AA compliance */
+/* Focus visible styles for keyboard navigation */
+:focus-visible {
+  outline: 3px solid #FF6B6B;
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline when using mouse */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure focus is visible on all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #FF6B6B;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast focus for dark backgrounds */
+.bg-accent-coral:focus-visible,
+.bg-brand-primary:focus-visible {
+  outline-color: #2D3436;
+}
+
+/* Screen reader only utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --focus-ring-color: #000000;
+  }
+  
+  :focus-visible {
+    outline: 3px solid #000000;
+    outline-offset: 2px;
+  }
+}
+
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;

@@ -227,12 +227,12 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
     <section
       id="order"
       className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-pastel-cream/30 to-white"
-      aria-label="Order section"
+      aria-labelledby="order-heading"
     >
       <div className="container mx-auto px-3 sm:px-4">
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-brand-dark mb-3 sm:mb-4">
+          <h2 id="order-heading" className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-brand-dark mb-3 sm:mb-4">
             Place Your Order
           </h2>
           <p className="font-body text-base sm:text-lg text-brand-dark/70 max-w-2xl mx-auto px-2">

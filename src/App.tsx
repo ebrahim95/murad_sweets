@@ -1,5 +1,5 @@
 import { SECTIONS } from './router'
-import { Navigation, Hero, Products } from './components'
+import { Navigation, Hero, Products, About } from './components'
 
 function App() {
   return (
@@ -14,16 +14,7 @@ function App() {
       <Products />
 
       {/* About Section */}
-      <section id={SECTIONS.about} className="min-h-screen py-16 bg-pastel-cream">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-bold text-brand-dark text-center mb-12">
-            About Us
-          </h2>
-          <p className="text-center text-gray-600 font-body">
-            About section - will be implemented in task 9
-          </p>
-        </div>
-      </section>
+      <About />
 
       {/* Order Section */}
       <section id={SECTIONS.order} className="min-h-screen py-16 bg-white">

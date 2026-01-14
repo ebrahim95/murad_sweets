@@ -9,6 +9,27 @@ interface UseScrollSpyOptions {
   throttleMs?: number
 }
 
+// Helper to get initial section from DOM
+function getInitialSection(offset: number): SectionId {
+  if (typeof window === 'undefined') return SECTIONS.home
+  
+  const scrollPosition = window.scrollY + offset
+  const sections = Object.values(SECTIONS)
+  
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const element = document.getElementById(sections[i])
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      const top = rect.top + window.scrollY
+      if (scrollPosition >= top) {
+        return sections[i]
+      }
+    }
+  }
+  
+  return SECTIONS.home
+}
+
 /**
  * Hook for detecting which section is currently in view based on scroll position.
  * Used for highlighting the active navigation item.
@@ -18,7 +39,8 @@ interface UseScrollSpyOptions {
  */
 export function useScrollSpy(options: UseScrollSpyOptions = {}): SectionId {
   const { offset = 100, throttleMs = 100 } = options
-  const [activeSection, setActiveSection] = useState<SectionId>(SECTIONS.home)
+  // Initialize with computed value to avoid synchronous setState in effect
+  const [activeSection, setActiveSection] = useState<SectionId>(() => getInitialSection(offset))
 
   const getSectionPositions = useCallback(() => {
     const sections = Object.values(SECTIONS)
@@ -79,11 +101,7 @@ export function useScrollSpy(options: UseScrollSpyOptions = {}): SectionId {
       setActiveSection(newActiveSection)
     }
 
-    // Set initial active section
-    const initialSection = determineActiveSection()
-    setActiveSection(initialSection)
-
-    // Add scroll listener
+    // Add scroll listener (initial section is already set via useState initializer)
     window.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {

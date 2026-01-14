@@ -386,7 +386,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 min-h-[44px] bg-accent-coral text-black font-heading font-semibold 
+                  className="w-full py-4 px-6 min-h-[44px] bg-accent-coral text-white font-heading font-semibold 
                     rounded-xl shadow-md hover:bg-accent-coral/90 hover:shadow-lg
                     focus:outline-none focus:ring-2 focus:ring-accent-coral focus:ring-offset-2
                     disabled:bg-gray-400 disabled:cursor-not-allowed disabled:shadow-none
@@ -395,7 +395,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
                   {isSubmitting ? (
                     <>
                       <svg 
-                        className="animate-spin h-5 w-5 text-black" 
+                        className="animate-spin h-5 w-5 text-white" 
                         xmlns="http://www.w3.org/2000/svg" 
                         fill="none" 
                         viewBox="0 0 24 24"

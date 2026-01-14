@@ -1,10 +1,44 @@
+/* All @import statements must come first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* Import App-specific styles */
-@import "./App.css";
+/* Tailwind v4 theme configuration */
+@theme {
+  /* Simple black and white palette */
+  --color-pastel-pink: #f5f5f5;
+  --color-pastel-peach: #fafafa;
+  --color-pastel-mint: #f0f0f0;
+  --color-pastel-lavender: #e8e8e8;
+  --color-pastel-cream: #ffffff;
+  --color-pastel-blue: #f5f5f5;
+  
+  /* Accent colors - grayscale */
+  --color-accent-coral: #333333;
+  --color-accent-gold: #666666;
+  --color-accent-teal: #444444;
+  --color-accent-magenta: #555555;
+  --color-accent-orange: #777777;
+  
+  /* Brand colors - black and white */
+  --color-brand-primary: #000000;
+  --color-brand-secondary: #f5f5f5;
+  --color-brand-dark: #000000;
+  --color-brand-light: #ffffff;
+  
+  /* Font families */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  /* Custom animations */
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+  --animate-fade-in-delay: fadeIn 0.8s ease-out 0.3s forwards;
+  --animate-fade-in-delay-2: fadeIn 0.8s ease-out 0.6s forwards;
+}
 
-/* Custom font imports */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
 /* Base styles */
 html {
@@ -22,39 +56,40 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
+/* Ensure sections have proper scroll margin for sticky header */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
 /* Ensure smooth transitions for all interactive elements */
 a, button {
   transition: all 0.2s ease-in-out;
 }
 
 /* Enhanced focus indicators for accessibility - WCAG 2.1 AA compliance */
-/* Focus visible styles for keyboard navigation */
 :focus-visible {
-  outline: 3px solid #FF6B6B;
+  outline: 3px solid #000000;
   outline-offset: 2px;
 }
 
-/* Remove default focus outline when using mouse */
 :focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Ensure focus is visible on all interactive elements */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid #FF6B6B;
+  outline: 3px solid #000000;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* High contrast focus for dark backgrounds */
 .bg-accent-coral:focus-visible,
 .bg-brand-primary:focus-visible {
-  outline-color: #2D3436;
+  outline-color: #ffffff;
 }
 
 /* Screen reader only utility class */
@@ -70,16 +105,32 @@ select:focus-visible,
   border-width: 0;
 }
 
-.sr-only:focus,
-.sr-only.focus\:not-sr-only:focus {
-  position: static;
-  width: auto;
+/* Responsive image optimization */
+img {
+  max-width: 100%;
   height: auto;
-  padding: inherit;
-  margin: inherit;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
+}
+
+/* Ensure minimum touch target size for interactive elements on touch devices */
+@media (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea {
+    min-height: 44px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
 }
 
 /* Reduced motion preference support */
@@ -96,10 +147,6 @@ select:focus-visible,
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  :root {
-    --focus-ring-color: #000000;
-  }
-  
   :focus-visible {
     outline: 3px solid #000000;
     outline-offset: 2px;
@@ -112,14 +159,14 @@ select:focus-visible,
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFFDD0;
+  background: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FFD6E0;
+  background: #cccccc;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF6B6B;
+  background: #999999;
 }

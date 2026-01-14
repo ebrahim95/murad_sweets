@@ -57,7 +57,7 @@ export function Hero() {
             px-6 py-3 sm:px-8 sm:py-4 
             min-h-[44px]
             bg-accent-coral hover:bg-accent-coral/90
-            text-black font-body font-semibold text-base sm:text-lg
+            text-white font-body font-semibold text-base sm:text-lg
             rounded-full
             shadow-lg hover:shadow-xl
             transform hover:scale-105

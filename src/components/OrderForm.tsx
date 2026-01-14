@@ -344,7 +344,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                               {product.name}
                             </h5>
                             <p className="font-heading font-bold text-accent-coral text-sm sm:text-base">
-                              ${formatPrice(product.price)}
+                              {formatPrice(product.price)}
                             </p>
                           </div>
                           
@@ -583,11 +583,11 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                                 {product.name}
                               </p>
                               <p className="font-body text-sm text-brand-dark/60">
-                                ${formatPrice(item.price)} × {item.quantity}
+                                {formatPrice(item.price)} × {item.quantity}
                               </p>
                             </div>
                             <p className="font-heading font-semibold text-brand-dark ml-4">
-                              ${formatPrice(item.price * item.quantity)}
+                              {formatPrice(item.price * item.quantity)}
                             </p>
                           </div>
                         )
@@ -598,7 +598,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                       <div className="flex justify-between items-center">
                         <p className="font-heading text-xl font-bold text-brand-dark">Total</p>
                         <p className="font-heading text-2xl font-bold text-accent-coral">
-                          ${formatPrice(total)}
+                          {formatPrice(total)}
                         </p>
                       </div>
                     </div>
@@ -610,7 +610,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 sm:py-4 px-4 sm:px-6 min-h-[44px] bg-accent-coral text-black font-heading font-semibold text-base sm:text-lg
+                className="w-full py-3 sm:py-4 px-4 sm:px-6 min-h-[44px] bg-accent-coral text-white font-heading font-semibold text-base sm:text-lg
                   rounded-xl shadow-lg hover:bg-accent-coral/90 hover:shadow-xl
                   focus:outline-none focus:ring-2 focus:ring-accent-coral focus:ring-offset-2
                   disabled:bg-gray-400 disabled:cursor-not-allowed disabled:shadow-none
@@ -619,7 +619,7 @@ export function OrderForm({ products, onSubmit }: OrderFormProps) {
                 {isSubmitting ? (
                   <>
                     <svg 
-                      className="animate-spin h-5 w-5 text-black" 
+                      className="animate-spin h-5 w-5 text-white" 
                       xmlns="http://www.w3.org/2000/svg" 
                       fill="none" 
                       viewBox="0 0 24 24"

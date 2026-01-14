@@ -1,5 +1,5 @@
-import { SECTIONS } from './router'
-import { Navigation, Hero, Products, About, ContactForm } from './components'
+import { Navigation, Hero, Products, About, ContactForm, OrderForm } from './components'
+import { products } from './data/products'
 
 function App() {
   return (
@@ -17,16 +17,7 @@ function App() {
       <About />
 
       {/* Order Section */}
-      <section id={SECTIONS.order} className="min-h-screen py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-bold text-brand-dark text-center mb-12">
-            Place an Order
-          </h2>
-          <p className="text-center text-gray-600 font-body">
-            Order form - will be implemented in task 11
-          </p>
-        </div>
-      </section>
+      <OrderForm products={products} />
 
       {/* Contact Section */}
       <ContactForm />

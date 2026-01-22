@@ -89,7 +89,7 @@ function App() {
         <Products />
 
         {/* About Section - Business story and mission */}
-        <About />
+        {/* <About /> */}
 
         {/* Order Section - Product selection and order form (lazy loaded) */}
         <Suspense fallback={<SectionLoader />}>
@@ -97,9 +97,9 @@ function App() {
         </Suspense>
 
         {/* Contact Section - Contact form and business info (lazy loaded) */}
-        <Suspense fallback={<SectionLoader />}>
-          <ContactForm />
-        </Suspense>
+        {/* <Suspense fallback={<SectionLoader />}> */}
+        {/*   <ContactForm /> */}
+        {/* </Suspense> */}
       </main>
 
       {/* Footer Component - Copyright and additional links */}

@@ -78,8 +78,8 @@ export function getNavLinks(): NavLink[] {
   return [
     { id: SECTIONS.home, label: 'Home', path: '#/home' },
     { id: SECTIONS.products, label: 'Products', path: '#/products' },
-    { id: SECTIONS.about, label: 'About', path: '#/about' },
+    // { id: SECTIONS.about, label: 'About', path: '#/about' },
     { id: SECTIONS.order, label: 'Order', path: '#/order' },
-    { id: SECTIONS.contact, label: 'Contact', path: '#/contact' },
+    // { id: SECTIONS.contact, label: 'Contact', path: '#/contact' },
   ]
 }

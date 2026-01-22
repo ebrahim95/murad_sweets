@@ -67,7 +67,7 @@ export function Hero() {
           "
           aria-label="Explore our products"
         >
-          Explore Our Treats
+         Order Now
           <svg 
             className="w-5 h-5" 
             fill="none" 

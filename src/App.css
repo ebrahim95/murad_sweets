@@ -53,7 +53,6 @@ section[id] {
 /* Responsive image optimization */
 img {
   max-width: 100%;
-  height: auto;
 }
 
 /* Ensure minimum touch target size for interactive elements on touch devices */

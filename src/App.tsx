@@ -1,18 +1,18 @@
-import { lazy, Suspense } from 'react'
-import { Navigation, Hero, Products, About, Footer } from './components'
-import { products } from './data/products'
+// import { lazy, Suspense } from 'react'
+import { Navigation, Hero, Products, Footer } from './components'
+// import { products } from './data/products'
 
 // Lazy load heavy form components for better initial load performance
 // These components are below the fold and can be loaded on demand
 // Requirements: 8.2, 8.3
-const OrderForm = lazy(() => import('./components/OrderForm'))
-const ContactForm = lazy(() => import('./components/ContactForm'))
+// const OrderForm = lazy(() => import('./components/OrderForm'))
+// const ContactForm = lazy(() => import('./components/ContactForm'))
 
 /**
  * Loading fallback component for lazy-loaded sections
  * Accessibility: Announces loading state to screen readers
  */
-function SectionLoader() {
+/* function SectionLoader() {
   return (
     <div
       className="py-16 md:py-24 flex items-center justify-center"
@@ -29,7 +29,7 @@ function SectionLoader() {
       </div>
     </div>
   )
-}
+} */
 
 /**
  * Main App component that composes all section components.

@@ -89,7 +89,7 @@ export function Navigation() {
             className="text-xl font-heading font-bold text-brand-primary hover:text-accent-coral transition-colors duration-300 py-2 min-h-[44px] flex items-center"
             aria-label="Go to home"
           >
-            Murad's Sweets
+            Murad Sweets
           </button>
 
           {/* Desktop Navigation - 44px minimum touch target height */}

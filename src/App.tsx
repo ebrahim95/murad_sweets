@@ -14,13 +14,13 @@ const ContactForm = lazy(() => import('./components/ContactForm'))
  */
 function SectionLoader() {
   return (
-    <div 
+    <div
       className="py-16 md:py-24 flex items-center justify-center"
       role="status"
       aria-label="Loading content"
     >
       <div className="flex flex-col items-center gap-4">
-        <div 
+        <div
           className="w-12 h-12 border-4 border-pastel-pink border-t-accent-coral rounded-full animate-spin"
           aria-hidden="true"
         />
@@ -58,8 +58,8 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Skip to main content link for accessibility - visible on focus */}
-      <a 
-        href="#main-content" 
+      <a
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
           bg-accent-coral text-white px-4 py-2 rounded-lg z-[100] font-body font-semibold
           focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent-coral"
@@ -68,9 +68,9 @@ function App() {
       </a>
 
       {/* Live region for screen reader announcements */}
-      <div 
-        aria-live="polite" 
-        aria-atomic="true" 
+      <div
+        aria-live="polite"
+        aria-atomic="true"
         className="sr-only"
         id="announcements"
       />
@@ -92,10 +92,10 @@ function App() {
         {/* <About /> */}
 
         {/* Order Section - Product selection and order form (lazy loaded) */}
-        <Suspense fallback={<SectionLoader />}>
+        {/*   <Suspense fallback={<SectionLoader />}>
           <OrderForm products={products} />
         </Suspense>
-
+       */}
         {/* Contact Section - Contact form and business info (lazy loaded) */}
         {/* <Suspense fallback={<SectionLoader />}> */}
         {/*   <ContactForm /> */}

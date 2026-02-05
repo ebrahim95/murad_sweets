@@ -4,7 +4,7 @@ export const products: Product[] = [
   // Mishti (Traditional Sweets)
   {
     id: 'cham-cham',
-    name: 'Cham Cham',
+    name: 'Chom Chom',
     description: 'Oval-shaped paneer sweets soaked in syrup and coated with coconut or mawa.',
     price: 1.50,
     image: '/images/cham-cham.webp',
@@ -22,7 +22,7 @@ export const products: Product[] = [
   },
   {
     id: 'rajbhog',
-    name: 'Rajbhog',
+    name: 'RajBhog',
     description: 'Larger, saffron-flavored roshgolla stuffed with dry fruits. Fit for royalty.',
     price: 1.50,
     image: '/images/rajbhog.webp',
@@ -31,8 +31,8 @@ export const products: Product[] = [
   },
   {
     id: 'malai-curry',
-    name: 'Malai Curry',
-    description: 'Cham cham served in a rich, creamy malai sauce. A luxurious treat.',
+    name: 'Malai Kari',
+    description: 'Chom chom served in a rich, creamy malai sauce. A luxurious treat.',
     price: 1.50,
     image: '/images/malai-curry.webp',
     available: true,
@@ -40,7 +40,7 @@ export const products: Product[] = [
   },
   {
     id: 'roshgolla',
-    name: 'Roshgolla',
+    name: 'RoshGolla',
     description: 'Light, spongy cottage cheese balls soaked in clear sugar syrup. The iconic Bengali sweet.',
     price: 1.75,
     image: '/images/roshgolla.webp',

@@ -5,8 +5,8 @@ import App from './App'
 describe('App', () => {
   it('renders the welcome message', () => {
     render(<App />)
-    // Use getAllByText since "Murad's Sweets" appears in both nav and hero
-    const elements = screen.getAllByText("Murad's Sweets")
+    // Use getAllByText since "Murad Sweets" appears in both nav and hero
+    const elements = screen.getAllByText("Murad Sweets")
     expect(elements.length).toBeGreaterThan(0)
     expect(elements[0]).toBeInTheDocument()
   })

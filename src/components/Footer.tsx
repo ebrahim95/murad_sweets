@@ -36,11 +36,15 @@ export function Footer() {
           {/* Brand section */}
           <div className="space-y-4">
             <h3 className="font-heading text-2xl font-bold text-accent-coral">
-              Murad's Sweets
+              Murad Sweets
             </h3>
             <p className="font-body text-brand-dark/70 leading-relaxed">
               Handcrafted sweets made with love and tradition. Bringing joy to
               every celebration since generations.
+            </p>
+            <p className="font-body text-brand-dark/70 leading-relaxed">
+              Phone Number: 346-368-4831
+             <br></br> Email: muradsweets1999@gmail.com
             </p>
           </div>
 
@@ -98,7 +102,7 @@ export function Footer() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               {/* Copyright */}
               <p className="font-body text-brand-dark/60 text-sm text-center md:text-left">
-                © {currentYear} Murad's Sweets. All rights reserved.
+                © {currentYear} Murad Sweets. All rights reserved.
               </p>
 
               {/* {/* Social links placeholder - 44px minimum touch targets */}

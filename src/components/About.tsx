@@ -53,7 +53,7 @@ export function About() {
               </h3>
               <div className="space-y-4 font-body text-brand-dark/80 leading-relaxed">
                 <p>
-                  Murad's Sweets began as a family tradition, passed down through generations 
+                  Murad Sweets began as a family tradition, passed down through generations 
                   of skilled artisans who believed that every sweet tells a story. What started 
                   in a small kitchen has blossomed into a beloved destination for those seeking 
                   authentic, handcrafted treats.

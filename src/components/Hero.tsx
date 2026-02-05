@@ -17,11 +17,20 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      {/* Background gradient with sweet-themed colors */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-pastel-pink via-pastel-peach to-pastel-cream"
-        aria-hidden="true"
-      />
+      {/* Background video */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/bg_video.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-pastel-pink/70 via-pastel-peach/70 to-pastel-cream/70" />
+      </div>
       
       {/* Decorative elements - hidden on small screens for performance */}
       <div className="absolute inset-0 overflow-hidden hidden sm:block" aria-hidden="true">
@@ -39,7 +48,7 @@ export function Hero() {
           id="hero-heading"
           className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-brand-dark mb-4 sm:mb-6 animate-fade-in"
         >
-          Murad's Sweets
+          Murad Sweets
         </h1>
         
         {/* Tagline */}
